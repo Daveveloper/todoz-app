@@ -1,0 +1,265 @@
+.app {
+  width: 100%;
+  max-width: 540px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.app-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: -16px;
+}
+
+.app-desc {
+  font-size: 14px;
+  text-align: center;
+  color: var(--gray-400);
+}
+
+.app-error {
+  font-size: 13px;
+  text-align: center;
+  color: var(--red);
+  background: var(--red-bg);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.app-loading {
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+/* ── Todo Form ── */
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-bottom: 2px solid var(--black);
+  padding-bottom: 8px;
+}
+
+.todo-form input {
+  flex: 1;
+  font-size: 16px;
+  padding: 8px 0;
+  background: transparent;
+  color: var(--black);
+}
+
+.todo-form input::placeholder {
+  color: var(--gray-400);
+}
+
+.todo-form-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ── Buttons ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-icon {
+  padding: 6px;
+  border-radius: 4px;
+  color: var(--black);
+}
+
+.btn-icon:hover {
+  background: var(--gray-100);
+}
+
+.btn-add {
+  padding: 8px;
+  border-radius: 6px;
+  color: var(--black);
+}
+
+.btn-add:hover {
+  background: var(--gray-100);
+}
+
+.btn-cancel {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1.5px solid var(--black);
+  color: var(--black);
+  background: var(--white);
+}
+
+.btn-cancel:hover {
+  background: var(--gray-100);
+}
+
+.btn-danger {
+  color: var(--red);
+}
+
+.btn-danger:hover {
+  background: var(--red-bg);
+}
+
+/* ── Todo List ── */
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.todo-filters {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--gray-200);
+  padding-bottom: 0;
+}
+
+.todo-filter-btn {
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-500);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.todo-filter-btn:hover {
+  color: var(--black);
+}
+
+.todo-filter-btn.active {
+  color: var(--black);
+  border-bottom-color: var(--black);
+}
+
+.todo-empty {
+  text-align: center;
+  color: var(--gray-400);
+  font-size: 14px;
+  padding: 32px 0;
+}
+
+.todo-items {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Todo Item ── */
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  flex-shrink: 0;
+  padding: 2px;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.todo-status:hover {
+  background: var(--gray-100);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 15px;
+  color: var(--black);
+}
+
+.todo-item--completed .todo-text {
+  text-decoration: line-through;
+  color: var(--gray-400);
+}
+
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.todo-item:hover .todo-actions {
+  opacity: 1;
+}
+
+/* ── Modal ── */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.modal-text {
+  font-size: 15px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+.modal-text strong {
+  color: var(--black);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
