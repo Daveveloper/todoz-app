@@ -9,6 +9,9 @@ const statusIcons = {
 export default function TodoItem({ todo, onToggleStatus, onEdit, onDelete }) {
   const StatusIcon = statusIcons[todo.status]
 
+  const desc = todo.description
+  const truncatedDesc = desc && desc.length > 50 ? desc.slice(0, 50) + '...' : desc
+
   return (
     <div className={`todo-item todo-item--${todo.status}`}>
       <button
@@ -18,7 +21,10 @@ export default function TodoItem({ todo, onToggleStatus, onEdit, onDelete }) {
       >
         <StatusIcon size={22} />
       </button>
-      <span className="todo-text">{todo.text}</span>
+      <div className="todo-content">
+        <span className="todo-text">{todo.text}</span>
+        {truncatedDesc && <p className="todo-desc">{truncatedDesc}</p>}
+      </div>
       <div className="todo-actions">
         <button className="btn btn-icon" onClick={() => onEdit(todo.id)} title="Edit">
           <Pencil size={18} />

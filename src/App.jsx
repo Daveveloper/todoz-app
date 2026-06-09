@@ -33,10 +33,10 @@ export default function App() {
     return () => { ignore = true }
   }, [])
 
-  async function addTodo(text) {
+  async function addTodo(text, description = '') {
     const { data, error } = await supabase
       .from('todos')
-      .insert({ text, status: 'pending' })
+      .insert({ text, description, status: 'pending' })
       .select()
     if (error) {
       setError(error.message)
@@ -45,15 +45,15 @@ export default function App() {
     }
   }
 
-  async function updateTodo(id, text) {
+  async function updateTodo(id, text, description = '') {
     const { error } = await supabase
       .from('todos')
-      .update({ text })
+      .update({ text, description })
       .eq('id', id)
     if (error) {
       setError(error.message)
     } else {
-      setTodos(todos.map(t => t.id === id ? { ...t, text } : t))
+      setTodos(todos.map(t => t.id === id ? { ...t, text, description } : t))
       setEditingId(null)
     }
   }
