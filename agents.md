@@ -57,3 +57,7 @@ Cargar el skill **react** para guía de desarrollo:
 ```
 
 El skill (`skills/react/SKILL.md`) cubre: componentes funcionales, hooks, manejo de estado, performance, testing con Vitest + RTL, formularios, y buenas prácticas generales.
+
+## Context7
+
+Usar **Context7 MCP** cuando se necesite documentación actualizada de librerías, APIs o paquetes. En particular, siempre que se agregue una nueva dependencia o librería al proyecto, invocar `context7` para obtener la documentación y guía de uso más reciente.

@@ -5,6 +5,10 @@
       "type": "remote",
       "url": "https://mcp.supabase.com/mcp",
       "oauth": {}
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
     }
   }
 }

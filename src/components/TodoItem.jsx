@@ -1,3 +1,4 @@
+import useTodoStore from '../store/todoStore'
 import { Circle, CircleDot, CheckCircle, Pencil, Trash2 } from './icons'
 
 const statusIcons = {
@@ -6,7 +7,11 @@ const statusIcons = {
   completed: CheckCircle,
 }
 
-export default function TodoItem({ todo, onToggleStatus, onEdit, onDelete }) {
+export default function TodoItem({ todo }) {
+  const toggleStatus = useTodoStore(state => state.toggleStatus)
+  const setEditingId = useTodoStore(state => state.setEditingId)
+  const setDeleteTarget = useTodoStore(state => state.setDeleteTarget)
+
   const StatusIcon = statusIcons[todo.status]
 
   const desc = todo.description
@@ -16,7 +21,7 @@ export default function TodoItem({ todo, onToggleStatus, onEdit, onDelete }) {
     <div className={`todo-item todo-item--${todo.status}`}>
       <button
         className="todo-status"
-        onClick={() => onToggleStatus(todo.id)}
+        onClick={() => toggleStatus(todo.id)}
         title={`Status: ${todo.status}. Click to change.`}
       >
         <StatusIcon size={22} />
@@ -26,10 +31,10 @@ export default function TodoItem({ todo, onToggleStatus, onEdit, onDelete }) {
         {truncatedDesc && <p className="todo-desc">{truncatedDesc}</p>}
       </div>
       <div className="todo-actions">
-        <button className="btn btn-icon" onClick={() => onEdit(todo.id)} title="Edit">
+        <button className="btn btn-icon" onClick={() => setEditingId(todo.id)} title="Edit">
           <Pencil size={18} />
         </button>
-        <button className="btn btn-icon btn-danger" onClick={() => onDelete(todo)} title="Delete">
+        <button className="btn btn-icon btn-danger" onClick={() => setDeleteTarget(todo)} title="Delete">
           <Trash2 size={18} />
         </button>
       </div>

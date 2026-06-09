@@ -1,7 +1,13 @@
 import { useState } from 'react'
+import useTodoStore from '../store/todoStore'
 import { Plus, X } from './icons'
 
-export default function TodoForm({ editingTodo, onAdd, onUpdate, onCancelEdit }) {
+export default function TodoForm() {
+  const addTodo = useTodoStore(state => state.addTodo)
+  const updateTodo = useTodoStore(state => state.updateTodo)
+  const setEditingId = useTodoStore(state => state.setEditingId)
+  const editingTodo = useTodoStore(state => state.todos.find(t => t.id === state.editingId))
+
   const [text, setText] = useState(editingTodo?.text ?? '')
   const [description, setDescription] = useState(editingTodo?.description ?? '')
 
@@ -9,9 +15,9 @@ export default function TodoForm({ editingTodo, onAdd, onUpdate, onCancelEdit })
     e.preventDefault()
     if (!text.trim()) return
     if (editingTodo) {
-      onUpdate(editingTodo.id, text.trim(), description.trim())
+      updateTodo(editingTodo.id, text.trim(), description.trim())
     } else {
-      onAdd(text.trim(), description.trim())
+      addTodo(text.trim(), description.trim())
     }
     setText('')
     setDescription('')
@@ -45,7 +51,7 @@ export default function TodoForm({ editingTodo, onAdd, onUpdate, onCancelEdit })
       </div>
       <div className="todo-form-actions">
         {editingTodo && (
-          <button type="button" className="btn btn-cancel" onClick={onCancelEdit}>
+          <button type="button" className="btn btn-cancel" onClick={() => setEditingId(null)}>
             Cancel
           </button>
         )}
