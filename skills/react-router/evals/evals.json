@@ -1,0 +1,45 @@
+{
+  "skill_name": "react-router",
+  "evals": [
+    {
+      "id": 0,
+      "name": "basic-routing-setup",
+      "prompt": "Tengo una app React con Vite. Quiero agregar routing con React Router v7. Necesito: una pagina Home, una pagina About, y un layout compartido con NavLink en el header que marque la ruta activa. Tambien quiero lazy loading para About. Escribime el codigo necesario.",
+      "expected_output": "Archivos de configuración del router con createBrowserRouter, layout con Outlet y NavLink, HomePage y AboutPage con lazy loading, montado con RouterProvider en App.jsx",
+      "files": [],
+      "expectations": [
+        "Usa createBrowserRouter + RouterProvider",
+        "Usa Outlet para el layout compartido",
+        "Usa NavLink con className callback para active styles",
+        "Usa lazy loading para la ruta About",
+        "El modulo lazy exporta Component, no default export"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "protected-routes-auth",
+      "prompt": "Tengo una app con autenticacion usando zustand (useAuthStore con user y loading). Quiero rutas protegidas: si no hay usuario autenticado redirigir a /login. Necesito layout con sidebar para las rutas protegidas, y la ruta /login publica. Dame el codigo de configuracion del router y el componente ProtectedRoute.",
+      "expected_output": "Router config con ruta publica /login y ruta protegida /app con children, componente ProtectedRoute que chequea auth y redirige con Navigate",
+      "files": [],
+      "expectations": [
+        "Usa ProtectedRoute como layout component que usa Outlet",
+        "Redirige con <Navigate to=\"/login\" replace /> si no hay usuario",
+        "Usa createBrowserRouter con children anidados",
+        "La ruta /app tiene ProtectedRoute como Component padre"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "search-params-error-boundary",
+      "prompt": "Necesito una pagina de productos que: lea filtros desde la URL (categoria, pagina), tenga paginacion con useSearchParams, y tenga un ErrorBoundary propio que muestre un mensaje amigable si falla la carga. Dame el codigo del componente ProductListPage con filtros y el ErrorBoundary.",
+      "expected_output": "Componente ProductListPage con useSearchParams para categoria y pagina, botones de paginacion que actualizan URL, y ErrorBoundary anidado en la ruta",
+      "files": [],
+      "expectations": [
+        "Usa useSearchParams para leer filtros",
+        "Usa setSearchParams para actualizar URL",
+        "ErrorBoundary es una ruta con el campo ErrorBoundary",
+        "ErrorBoundary usa isRouteErrorResponse para distinguir errores"
+      ]
+    }
+  ]
+}

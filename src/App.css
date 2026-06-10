@@ -1,10 +1,29 @@
-.app {
-  width: 100%;
-  max-width: 540px;
-  padding: 48px 24px;
+/* ── Dashboard Layout ── */
+
+.dashboard {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  min-height: 100svh;
+  width: 100%;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 48px;
+  max-width: 50%;
+}
+
+.app-loading-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
 }
 
 .app-title {
@@ -29,6 +48,7 @@
   background: var(--red-bg);
   padding: 8px 12px;
   border-radius: 6px;
+  margin-bottom: 24px;
 }
 
 .app-loading {
@@ -36,6 +56,28 @@
   color: var(--gray-400);
   font-size: 14px;
   padding: 32px 0;
+}
+
+/* ── Task Panel ── */
+
+.task-panel {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 20px 24px 24px;
+  margin-bottom: 32px;
+}
+
+.task-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.task-panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
 }
 
 /* ── Todo Form ── */
@@ -220,27 +262,24 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 0;
+  padding: 12px;
   border-bottom: 1px solid var(--gray-200);
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 0 -12px;
+  transition: background 0.15s;
+}
+
+.todo-item:hover {
+  background: var(--gray-100);
+}
+
+.todo-item--selected {
+  background: var(--gray-100);
 }
 
 .todo-item:last-child {
   border-bottom: none;
-}
-
-.todo-status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--black);
-  flex-shrink: 0;
-  padding: 2px;
-  border-radius: 50%;
-  transition: background 0.15s;
-}
-
-.todo-status:hover {
-  background: var(--gray-100);
 }
 
 .todo-content {
@@ -264,17 +303,6 @@
 .todo-item--completed .todo-text {
   text-decoration: line-through;
   color: var(--gray-400);
-}
-
-.todo-actions {
-  display: flex;
-  gap: 4px;
-  opacity: 0;
-  transition: opacity 0.15s;
-}
-
-.todo-item:hover .todo-actions {
-  opacity: 1;
 }
 
 /* ── Modal ── */

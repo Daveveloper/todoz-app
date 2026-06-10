@@ -5,6 +5,7 @@ const useTodoStore = create((set, get) => ({
   todos: [],
   filter: 'all',
   editingId: null,
+  selectedTodoId: null,
   deleteTarget: null,
   loading: true,
   error: null,
@@ -62,6 +63,7 @@ const useTodoStore = create((set, get) => ({
       set(state => ({
         todos: state.todos.filter(t => t.id !== deleteTarget.id),
         deleteTarget: null,
+        selectedTodoId: state.selectedTodoId === deleteTarget.id ? null : state.selectedTodoId,
       }))
     }
   },
@@ -86,6 +88,7 @@ const useTodoStore = create((set, get) => ({
 
   setFilter: (filter) => set({ filter }),
   setEditingId: (id) => set({ editingId: id }),
+  setSelectedTodoId: (id) => set({ selectedTodoId: id }),
   setDeleteTarget: (todo) => set({ deleteTarget: todo }),
 }))
 

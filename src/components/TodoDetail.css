@@ -1,0 +1,112 @@
+.detail-panel {
+  flex: 1;
+  min-width: 0;
+  border-left: 1px solid var(--gray-200);
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 100svh;
+  position: sticky;
+  top: 0;
+}
+
+.detail-close {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.detail-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.detail-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--black);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.detail-id {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--gray-400);
+  white-space: nowrap;
+  margin-top: 6px;
+}
+
+.detail-date {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.detail-jumbotron {
+  background: var(--gray-100);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.detail-jumbotron-text {
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.detail-jumbotron-text--empty {
+  color: var(--gray-300);
+  font-style: italic;
+}
+
+.detail-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+}
+
+.detail-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.detail-status:hover {
+  background: var(--gray-100);
+}
+
+.detail-actions {
+  display: flex;
+  gap: 8px;
+  padding-top: 32px;
+  border-top: 1px solid var(--gray-200);
+}

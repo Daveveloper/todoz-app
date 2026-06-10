@@ -2,7 +2,7 @@ import { useState } from 'react'
 import useTodoStore from '../store/todoStore'
 import { Plus, X } from './icons'
 
-export default function TodoForm() {
+export default function TodoForm({ onClose }) {
   const addTodo = useTodoStore(state => state.addTodo)
   const updateTodo = useTodoStore(state => state.updateTodo)
   const setEditingId = useTodoStore(state => state.setEditingId)
@@ -18,9 +18,9 @@ export default function TodoForm() {
       updateTodo(editingTodo.id, text.trim(), description.trim())
     } else {
       addTodo(text.trim(), description.trim())
+      setText('')
+      setDescription('')
     }
-    setText('')
-    setDescription('')
   }
 
   function handleClear() {
@@ -28,8 +28,13 @@ export default function TodoForm() {
     setDescription('')
   }
 
-  return (
-    <form className="todo-form" onSubmit={handleSubmit}>
+  function handleCancel() {
+    setEditingId(null)
+    if (onClose) onClose()
+  }
+
+  const formContent = (
+    <>
       <div className="todo-form-fields">
         <input
           type="text"
@@ -51,7 +56,7 @@ export default function TodoForm() {
       </div>
       <div className="todo-form-actions">
         {editingTodo && (
-          <button type="button" className="btn btn-cancel" onClick={() => setEditingId(null)}>
+          <button type="button" className="btn btn-cancel" onClick={handleCancel}>
             Cancel
           </button>
         )}
@@ -62,6 +67,30 @@ export default function TodoForm() {
           <Plus size={16} /> {editingTodo ? 'Save' : 'Add'}
         </button>
       </div>
+    </>
+  )
+
+  if (onClose) {
+    return (
+      <div className="task-panel">
+        <div className="task-panel-header">
+          <span className="task-panel-title">
+            {editingTodo ? 'Edit task' : 'New task'}
+          </span>
+          <button type="button" className="btn btn-icon" onClick={onClose}>
+            <X size={18} />
+          </button>
+        </div>
+        <form className="todo-form" onSubmit={handleSubmit}>
+          {formContent}
+        </form>
+      </div>
+    )
+  }
+
+  return (
+    <form className="todo-form" onSubmit={handleSubmit}>
+      {formContent}
     </form>
   )
 }
