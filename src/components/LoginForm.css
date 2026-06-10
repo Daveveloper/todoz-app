@@ -21,12 +21,11 @@
   gap: 8px;
 }
 
-.login-title {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -1px;
-  text-align: center;
-  color: var(--black);
+.login-logo {
+  display: block;
+  width: 140px;
+  height: auto;
+  margin-bottom: 4px;
 }
 
 .login-desc {

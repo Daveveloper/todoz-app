@@ -18,7 +18,7 @@ export default function LoginForm() {
   return (
     <div className="login">
       <div className="login-card">
-        <h1 className="login-title">2dos</h1>
+        <img className="login-logo" src="/logo-dark.svg" alt="TODOZ" />
         <p className="login-desc">Sign in to continue</p>
         {error && <p className="login-error">{error}</p>}
         <form className="login-form" onSubmit={handleSubmit}>
